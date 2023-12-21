@@ -8,7 +8,7 @@ class Reformatter():
     def __init__(self):
         self.loader = Loader()
         self.content = self.get_file_contents()
-        self.access_token = self.request_access_token()
+        self.auth_token = self.request_auth_token()
 
     def get_file_contents(self):
         """Looks for a `contributors.json` file in the base directory"""
@@ -18,24 +18,24 @@ class Reformatter():
 
         return content
 
-    def request_access_token(self):
+    def request_auth_token(self):
         """Requests the user to enter an access token"""
         # Show warning if over 60 or 250 items
         # anonymous users have a rate limit of 60 per hour
-        access_token = None
+        auth_token = None
         if (len(self.content) > 60):
             print('An authentication token will be needed to request over 60 users')
-            while access_token is None:
-                access_token = input('Enter your access token ') or None
+            while auth_token is None:
+                auth_token = input('Enter your access token ') or None
 
             if len(self.content) > 250:
                 cont = input('The length of the input is over 250 users, do you want to continue? (y/n) ')
                 if cont != 'y':
                     sys.exit(0)
         else:
-            access_token = input('Enter a personal access token (leave blank otherwise) ') or None
+            auth_token = input('Enter a personal access token (leave blank otherwise) ') or None
 
-        return access_token
+        return auth_token
 
     def reformat(self):
         """Gathers each user and writes to a JSON file"""
@@ -46,7 +46,7 @@ class Reformatter():
         for account in self.content:
             account_url = account['url']
 
-            user = self.fetch_user(account_url, self.access_token)
+            user = self.fetch_user(account_url, self.auth_token)
 
             user_json = {
                 'username': user['login'],
