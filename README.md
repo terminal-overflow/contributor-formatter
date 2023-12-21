@@ -1,5 +1,5 @@
 # Contributor Reformatter
-A Reformatter for GitHub APIs [Repository Contributors endpoint](https://docs.github.com/en/rest/repos/repos?apiVersion=2022-11-28#list-repository-contributors) which **returns the user and username associated with each contributor.**
+A Reformatter for GitHub APIs [Repository Contributors endpoint](https://docs.github.com/en/rest/repos/repos?apiVersion=2022-11-28#list-repository-contributors) which **returns the username and name associated with each contributor.**
 
 ### Dependencies
 * requests
