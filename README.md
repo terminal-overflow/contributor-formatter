@@ -33,11 +33,12 @@ python3 reformatter.py
 
 ## How it Works
 ### Prerequisites
-This reformatter reads from a JSON file which should already contain results from a call to the Contributors endpoint.
-Rename your JSON input file to `contributors.json`.
+**Rename your JSON input file to `contributors.json`.**
 
-This example can be used for reference.
-```zsh
+This reformatter reads from the JSON file which should already contain results from a call to the Contributors endpoint.
+
+This is an example of a call to that endpoint and can be used for reference.
+```zsh copy
 curl -L \
   -H "Accept: application/vnd.github+json" \
   -H "Authorization: Bearer AUTH_TOKEN" \ Only if needed for accessing private repositories
@@ -46,8 +47,9 @@ curl -L \
 ```
 
 ### Running
-Move your output/response file into the base directory of this repository.
-Run the program and enter the file name of the output file you have just moved in to the repository.
+1. Move your output/response file into the base directory of this repository.
+2. Run the program
+3. Enter a GitHub access token if needed
 
 > [!note]
 > The program will return an error if the file `contributors.json` is not found and is not in the base directory.
