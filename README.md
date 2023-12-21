@@ -50,13 +50,13 @@ Move your output/response file into the base directory of this repository.
 Run the program and enter the file name of the output file you have just moved in to the repository.
 
 > [!note]
-> The program will return an error if the file 'contributors.json` is not found and is not in the base directory.
+> The program will return an error if the file `contributors.json` is not found and is not in the base directory.
 
 ### The Process
-Each contributor will be looped over and the user will be queried. The username and name associated with the account will be recorded.
+Each contributor will be looped over and the user will be queried. The username and name associated with the account will be returned.
 
 ### Output
-A file called `reformatted.json` will be created in the base directory.
+A file called `reformatted.json` will be created in the base directory once all users have been accessed.
 
 ### Output Format
 ```json
