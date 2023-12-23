@@ -1,6 +1,7 @@
 import sys
 import json
 import requests
+import getpass
 
 from tools import Loader
 
@@ -26,14 +27,14 @@ class Reformatter():
         if (len(self.content) > 60):
             print('An authentication token will be needed to request over 60 users')
             while auth_token is None:
-                auth_token = input('Enter your access token ') or None
+                auth_token = getpass.getpass('Enter your access token ') or None
 
             if len(self.content) > 250:
                 cont = input('The length of the input is over 250 users, do you want to continue? (y/n) ')
                 if cont != 'y':
                     sys.exit(0)
         else:
-            auth_token = input('Enter a personal access token (leave blank otherwise) ') or None
+            auth_token = getpass.getpass('Enter a personal access token (leave blank otherwise) ') or None
 
         return auth_token
 
@@ -46,7 +47,7 @@ class Reformatter():
         for account in self.content:
             account_url = account['url']
 
-            user = self.fetch_user(account_url, self.auth_token)
+            user = self.fetch_user(account_url)
 
             user_json = {
                 'username': user['login'],
@@ -59,13 +60,13 @@ class Reformatter():
         with open ('reformatted.json', 'w') as f:
             json.dump(output, f, indent= 2)
     
-    def fetch_user(self, account_url, PAT):
+    def fetch_user(self, account_url):
         """Fetch a user given the GitHub account URL"""
         headers = {
             'Accept': 'application/vnd.github+json',
-            'Authorization': f'Bearer {PAT}'
+            'Authorization': f'Bearer {self.auth_token}'
             }
-        response = requests.get(account_url, headers=headers) if PAT else requests.get(account_url)
+        response = requests.get(account_url, headers=headers) if self.auth_token else requests.get(account_url)
 
         if not response.ok:
             self.loader.stop_loading()
@@ -73,5 +74,3 @@ class Reformatter():
             sys.exit(1)
 
         return response.json()
-    
-Reformatter().reformat()

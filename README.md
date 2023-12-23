@@ -28,7 +28,7 @@ pip3 install -r requirements.txt
 
 ### Run
 ```
-python3 reformatter.py
+python3 reformatter
 ```
 
 ## How it Works
