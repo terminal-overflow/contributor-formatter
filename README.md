@@ -1,4 +1,4 @@
-another test# Contributor Reformatter
+# Contributor Reformatter
 A Reformatter for GitHub APIs [Repository Contributors endpoint](https://docs.github.com/en/rest/repos/repos?apiVersion=2022-11-28#list-repository-contributors) which **produces a JSON file with the username and name associated with each contributor.**
 
 ### Dependencies
