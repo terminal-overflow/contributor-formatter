@@ -41,7 +41,7 @@ This is an example of a call to that endpoint and can be used for reference.
 ```zsh copy
 curl -L \
   -H "Accept: application/vnd.github+json" \
-  -H "Authorization: Bearer AUTH_TOKEN" \ Only if needed for accessing private repositories
+  -H "Authorization: Bearer AUTH_TOKEN" \ Only needed if accessing private repositories
   -H "X-GitHub-Api-Version: 2022-11-28" \
   --url "https://api.github.com/repos/OWNER/REPO/contributors" >> contributors.json
 ```
